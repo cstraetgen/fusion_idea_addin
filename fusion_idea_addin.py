@@ -337,10 +337,13 @@ class RunScriptEventHandler(adsk.core.CustomEventHandler):
                 if script_path:
                     script_path = os.path.abspath(script_path)
                     script_dir = os.path.dirname(script_path)
+                    logger.debug("Script path: %s" % script_path)
+                    logger.debug("Script dir: %s" % script_dir)
 
                     try:
                         # This mostly mimics the package name that Fusion uses when running the script
                         module_name = "__main__" + urllib.parse.quote(script_path.replace('.', '_'))
+                        logger.debug("Module name: %s" % module_name)
                         spec = importlib.util.spec_from_file_location(
                             module_name, script_path,
                             loader=importlib.machinery.SourceFileLoader(module_name, script_path),
