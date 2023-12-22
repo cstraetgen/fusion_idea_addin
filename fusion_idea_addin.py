@@ -128,7 +128,7 @@ class AddIn(object):
                 backupCount=1)
             self._logging_file_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
             logger.addHandler(self._logging_file_handler)
-            logger.setLevel(logging.INFO)
+            logger.setLevel(logging.DEBUG)
             logger.info("Starting fusion_idea_addin version %s" % VERSION)
 
             try:
@@ -308,6 +308,11 @@ class RunScriptEventHandler(adsk.core.CustomEventHandler):
             pydevd_path = args["pydevd_path"]
 
             detach = script_path and debug
+
+            logger.debug("Starting script: %s" % script_path)
+            logger.debug("Debugging: %s" % debug)
+            logger.debug("PyDevd path: %s" % pydevd_path)
+            logger.debug("Detach: %s" % detach)
 
             if not script_path and not debug:
                 logger.warning("No script provided and debugging not requested. There's nothing to do.")
