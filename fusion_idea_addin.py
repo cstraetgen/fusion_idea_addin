@@ -129,6 +129,7 @@ class AddIn(object):
             self._logging_file_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
             logger.addHandler(self._logging_file_handler)
             logger.setLevel(logging.INFO)
+            logger.info("Starting fusion_idea_addin version %s" % VERSION)
 
             try:
                 app().unregisterCustomEvent(ERROR_DIALOG_EVENT)
