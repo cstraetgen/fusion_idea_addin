@@ -128,7 +128,7 @@ class AddIn(object):
                 backupCount=1)
             self._logging_file_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
             logger.addHandler(self._logging_file_handler)
-            logger.setLevel(logging.WARNING)
+            logger.setLevel(logging.INFO)
 
             try:
                 app().unregisterCustomEvent(ERROR_DIALOG_EVENT)
